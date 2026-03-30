@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mídias em HTML5</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body{
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+    </style>
+</head>
+<body>
+    <H1>Imagens dinâmicas</H1>
+    
+    <p>Tente abrir esse site em vários dispositivos deferentes ou simplesmente aumete e diminua o tamanho do seu navegador</p>
+    <picture>
+        <source media="(max-width: 750px)" srcset="imagens/foto-p.png" type="image/png">
+        <source media="(max-width: 1050px)" srcset="imagens/foto-m.png" type="image/png">
+        <img src="imagens/foto-g.png" alt="imagem flexível">
+    </picture>
+    <h2>Reproduzindo Áudio</h2>
+    <P>Vamos aprender a reproduzir áudios em HTML5</P>
+    <audio src="midia/the_end.mp3" controls></audio> <!-- MP3 WAV OGG -->
+    <audio preload="auto" autoplay controls loop>
+        <source src="midia/her_majesty.wav" type="audio/wav">
+        <source src="midia/her_majesty.mp3" type="audio/mpeg">
+        <source src="midia/her_majesty.ogg" type="audio/ogg">
+        <p>infelizmente seu navegador não consegue reproduzir o áudio. <a href="midia/her_majesty.wav">Clique aqui para baixar o arquivo</a></p>
+    </audio>
+
+</body>
+</html>

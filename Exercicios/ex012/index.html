@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Vídeos com HTML5</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        p{
+            color: #FFF500;
+        }
+        h1{
+            background-color: #F8B723; color: #30006D;
+        }
+        body{
+            background-color: #282828;
+        }
+        hr{color: #640CAB;
+    }
+    </style>
+</head>
+<body style="text-align: center;">
+    <h1>Inserindo vídeos hospedados localmente</h1>
+    <hr>
+    <p>Este vídeo está hospedado no meu próprio servidor.</p>
+    <p>
+        <video src="media/esse-cachorro-vai ja-morre.mp4" width="500" controls></video>
+    </p>
+    <p>
+        <video src="media/esse-cachorro-vai-ja-morre.ogv" type="video/ogg" width="500" controls></video>
+    </p>
+    <p>
+        <video src="media/esse-cachorro-vai-ja-morre.webm" width="500" controls></video>
+    </p>
+    <p>
+        <video src="media/esse-cachorro-vai-ja-morre.m4v" width="500" controls></video>
+    </p>
+    
+    <video src="media/marcel_lefebvre_ sagrações_episcopais_de_1988_legendado.mp4" width="500" controls></video>
+    <br>
+    <video controls width="500" poster="imagens/IMG-20220511-WA0093.jpg" >
+        <source src="media/esse-cachorro-vai ja-morre.mp4" type="video/mp4">
+        <source src="media/esse-cachorro-vai ja-morre.m4v" type="video/mp4">
+        <source src="media/esse-cachorro-vai ja-morre.ogv" type="video/ogg">
+        <source src="media/esse-cachorro-vai ja-morre.webm" type="video/webm">
+        <p>Seu navegador não tem compatibilidade com reprodução de vídeos.</p>
+    </video>
+    <h1>Inserindo vídeos do YouTube</h1>
+    <hr>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/U_8SuBx60t8?si=jrpAiPOLJ8yzwcBs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+   <h1>Inserindo vídeos do Vimeo</h1>
+   <hr>
+   <iframe src="https://player.vimeo.com/video/391655018?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="500" height="500" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="THE BEATLES - HELP - in colour!"></iframe>
+</body>
+</html>

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ofício das Sete Lágrimas de Nossa Senhora</title>
+  <style>
+    :root {
+      --ink: #1f1a17;
+      --rubric: #8b2f2f;
+      --gold: #8c6a2b;
+      --line: #cdbd9a;
+      --paper: #fbf8f1;
+      --paper-deep: #f4efe3;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #e8e1d3;
+      color: var(--ink);
+      font-family: "Georgia", "Times New Roman", serif;
+    }
+
+    body {
+      padding: 32px 0;
+    }
+
+    .book {
+      width: 210mm;
+      max-width: calc(100vw - 24px);
+      margin: 0 auto;
+      background: var(--paper);
+      box-shadow: 0 18px 48px rgba(42, 29, 12, 0.18);
+      border: 1px solid rgba(99, 74, 34, 0.16);
+    }
+
+    .page {
+      min-height: 297mm;
+      padding: 22mm 18mm 20mm;
+      position: relative;
+      background:
+        radial-gradient(circle at top, rgba(140, 106, 43, 0.035), transparent 30%),
+        linear-gradient(to bottom, rgba(255,255,255,0.75), rgba(244,239,227,0.8)),
+        var(--paper);
+      page-break-after: always;
+    }
+
+    .page:last-child { page-break-after: auto; }
+
+    .ornament {
+      width: 160px;
+      height: 1px;
+      margin: 12px auto 18px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      position: relative;
+    }
+
+    .ornament::before {
+      content: "✠";
+      position: absolute;
+      left: 50%;
+      top: -11px;
+      transform: translateX(-50%);
+      background: var(--paper);
+      color: var(--gold);
+      padding: 0 8px;
+      font-size: 13px;
+    }
+
+    .cover {
+      display: flex;
+      min-height: calc(297mm - 42mm);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .cover .cross {
+      font-size: 20px;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+
+    .cover h1 {
+      margin: 0;
+      font-size: 17pt;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cover h2 {
+      margin: 0;
+      font-size: 26pt;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1.15;
+    }
+
+    .cover h3 {
+      margin: 0;
+      font-size: 15pt;
+      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+
+    .marian-img {
+      width: 400px;
+      height: auto;
+      object-fit: contain;
+      margin: 10px auto;
+    }
+
+    .crest {
+      width: 250px;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 18pt;
+      margin: 0 0 10px;
+      font-weight: 600;
+    }
+
+    .subhead {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 11pt;
+      letter-spacing: 0.08em;
+      margin: 4px 0 16px;
+      color: #4f4132;
+    }
+
+    .rubric {
+      color: var(--rubric);
+      font-style: italic;
+    }
+
+    .lead {
+      font-size: 11.5pt;
+      line-height: 1.5;
+      margin: 0 0 12px;
+      text-align: center;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .verse-block, .text-block, .dialogue {
+      font-size: 12pt;
+      line-height: 1.42;
+      white-space: pre-line;
+      margin: 0px 0px 14px ;
+    }
+
+    .dialogue strong {
+      font-weight: 700;
+    }
+
+    .mini-title {
+      font-size: 14pt;
+      font-weight: 700;
+      margin: 18px 0 10px;
+    }
+
+    .tear-title {
+      text-align: center;
+      font-size: 18pt;
+      margin: 26px 0 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      font-weight: 700;
+    }
+
+    .citation {
+      font-size: 12pt;
+      font-weight: 700;
+      margin: 0 0 12px;
+      text-transform: uppercase;
+    }
+
+    .psalm-title {
+      font-size: 15pt;
+      font-weight: 700;
+      margin: 10px 0 10px;
+    }
+
+    .prayer-title {
+      font-size: 13pt;
+      font-weight: 700;
+      margin: 18px 0 8px;
+      text-transform: uppercase;
+    }
+
+    .center { text-align: center; }
+
+    .indent { margin-left: 14px; }
+
+    .footer-mark {
+      position: absolute;
+      bottom: 10mm;
+      left: 18mm;
+      right: 18mm;
+      text-align: center;
+      color: rgba(100, 80, 48, 0.55);
+      font-size: 9pt;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .supply {
+      font-size: 12.2pt;
+      line-height: 1.48;
+      text-align: justify;
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .book {
+        width: auto;
+        max-width: none;
+        box-shadow: none;
+        border: none;
+      }
+      .page {
+        margin: 0;
+      }
+      
+    }
+
+    @media (max-width: 900px) {
+      .columns {
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+      }
+      .page {
+        min-height: auto;
+        padding: 28px 22px 48px;
+        
+      }
+      .book {
+        width: 100%;
+        max-width: 100%;
+        border-left: none;
+        border-right: none;
+        
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="book">
+    <section class="page">
+      <div class="cover">
+        <!-- BRASÃO -->
+        <img class="crest" src="brasao.png" alt="Brasão Paróquia" />
+
+        <div class="cross">✠</div>
+        <h1>Ofício das</h1>
+        <h2>Sete Lágrimas</h2>
+        <h3>de Nossa Senhora</h3>
+
+        <div class="ornament"></div>
+
+        <!-- IMAGEM DE NOSSA SENHORA -->
+        <img class="marian-img" src="nossasenhora.png" alt="Nossa Senhora das Dores" />
+      </div>
+      <div class="footer-mark">Ofício Devocional</div>
+    </section>
+
+    <section class="page">
+      <h2 class="section-title">Canto de Entrada</h2>
+      <p class="lead rubric">(O sacerdote dirige-se ao presbitério de capa pluvial roxa, e em seguida incensa o altar e a imagem de Nossa Senhora das Dores. Após a incensação, o sacerdote se dirige a cadeira presidencial, dando início a celebração.)</p>
+      <div class="columns">
+        <div class="verse-block">Ó mãe dolorosa,
+Que aflita chorais
+Repleta de angústia
+Bendita sejais
+
+A voz de Simeão
+No templo escutais
+Cruéis profecias
+Bendita sejais
+
+O céu manda um Anjo
+Dizer que fujais
+Da fúria de Herodes
+Bendiga sejais
+
+Voltando do templo
+Jesus não achais
+Que susto sofrestes
+Bendita sejais
+
+Que dor indizível
+Quando O encontrai
+Com a cruz às costas
+Bendita sejais</div>
+        <div class="verse-block">A dor ainda cresce
+Quando contemplais
+Jesus expirando
+Bendita sejais
+
+No vosso regaço
+Seu corpo abrigais
+Com ele abraçada
+Bendita sejais
+
+Sem filho e tal filho
+Então suportias
+Cruel solidão
+Bendita sejais
+
+Bendita sejais
+Senhora das Dores
+Ouvi nosso rogos
+Mãe dos pecadores</div>
+      </div>
+
+      <h2 class="section-title">Oração Inicial</h2>
+      <p class="rubric text-block">(O sacerdote cantando inicia:)</p>
+      <div class="dialogue"><strong>V:</strong> Vinde, ó Deus, em meu auxílio.
+<strong>R:</strong> Socorrei-me sem demora.
+
+<strong>V:</strong> Glória ao Pai e ao Filho e ao Espírito Santo
+<strong>R:</strong> Como era no princípio, agora e sempre. Amém.</div>
+      <p class="rubric text-block">(Em seguida canta-se o hino das dores)</p>
+      <div class="footer-mark">Preparação</div>
+    </section>
+
+    <section class="page">
+      <h3 class="mini-title">Hino</h3>
+      <div class="columns">
+        <div class="verse-block">Agora lábios meus
+        proclamem e anunciem
+        os grandes louvores
+        da Virgem, Mãe das Dores
+        
+        Sede em meu favor
+        Virgem Dolorosa
+        o mal não triunfe
+        sobre os filhos teus</div>
+        
+        <div class="verse-block">Glória seja ao Pai
+        ao Filho e ao Amor também
+        que são um só Deus
+        em pessoas três
+        Agora e sempre e sem fim.
+        Amém</div>
+      </div>
+      
+      <h2 class="tear-title">Primeira Lágrima de Nossa Senhora</h2>
+      <div class="citation">L1: Evangelho de São Lucas (2, 33-35):</div>
+      <div class="text-block">Simeão abençoou-os e disse a Maria, sua mãe:
+Eis que este menino está destinado a ser uma causa de queda e de soerguimento para muitos homens em Israel, e a ser um sinal que provocará contradições, E uma espada transpassará a tua alma.</div>
+      <div class="psalm-title">1º - Cântico Jr 14,17-21</div>
+      <div class="columns">
+        <div class="verse-block">–17 Os meus olhos, noite e dia, *
+chorem lágrimas sem fim;
+= pois sofreu um golpe horrível, †
+foi ferida gravemente *
+a virgem filha do meu povo!
+
+–18 Se eu saio para os campos, *
+eis os mortos à espada;
+– se eu entro na cidade, *
+eis as vítimas da fome!
+
+= Até o profeta e o sacerdote †
+perambulam pela terra *
+sem saber o que se passa.
+–19 Rejeitastes, por acaso, *
+a Judá inteiramente?
+
+– Por acaso a vossa alma *
+desgostou-se de Sião?
+– Por que feristes vosso povo *
+de um mal que não tem cura?
+</div>
+        <div class="verse-block">– Esperávamos a paz, *
+e não chegou nada de bom;
+– e o tempo de reerguer-nos, *
+mas só vemos o terror!
+
+=20 Conhecemos nossas culpas †
+e as de nossos ancestrais, *
+pois pecamos contra vós!
+– Por amor de vosso nome, *
+ó Senhor, não nos deixeis!
+
+–21 Não deixeis que se profane *
+vosso trono glorioso!
+– Recordai-vos, ó Senhor! *
+Não rompais vossa Aliança!</div>
+  </div>
+<div class="footer-mark">Preparação e Primeira Lágrima</div>
+    </section>
+    <section class="page">
+      <div class="prayer-title">Oração:</div>
+      <div class="text-block">Santa Maria, Mãe de Deus, Senhora das Dores, rogai por nós ao Rei entregue à morte, vosso suave Filho para que por sua terna clemência e pela força de sua Santíssima Ressurreição se digne perdoar todos os nossos pecados.</div>
+      <div class="text-block"><strong>(Reza-se 1 Ave Maria)</strong></div>
+      <div class="mini-title">Canto Meditativo</div>
+      <div class="verse-block">Dolorosa, aguda espada transpassou-me o coração
+-Quando a morte do meu filho me predisse simeão (2x)</div>
+      <div class="footer-mark">Primeira e Segunda Lágrimas</div>
+    
+
+    
+      <h2 class="tear-title">Segunda Lágrima de Nossa Senhora</h2>
+      <div class="citation">L2: Do Evangelho de São Mateus (2,13-15):</div>
+      <div class="text-block">Depois de sua partida, um anjo do Senhor apareceu em sonhos a José e disse:
+Levanta-te, toma o menino e sua mãe e foge para o Egito, fica lá até que eu te avise, porque Herodes vai procurar o menino para o matar.</div>
+      <div class="psalm-title">2º Cântico Ez 36, 24-28</div>
+      <div class="verse-block">=24 Haverei de retirar-vos do meio das nações, †
+haverei de reunir-vos de todos os países, *
+e de volta eu levarei todos vós à vossa terra.
+
+=25 Haverei de derramar sobre vós uma água pura, †
+e de vossas imundícies sereis purificados; *
+sim, sereis purificados de toda a idolatria.
+
+=26 Dar-vos-ei um novo espírito e um novo coração; †
+tirarei de vosso peito este coração de pedra, *
+no lugar colocarei novo coração de carne.
+
+=27 Haverei de derramar meu Espírito em vós †
+e farei que caminheis obedecendo a meus preceitos, *
+que observeis meus mandamentos e guardeis a minha Lei.
+
+=28 E havereis de habitar aquela terra prometida, †
+que nos tempos do passado eu doei a vossos pais, *
+e sereis sempre o meu povo e eu serei o vosso Deus!</div>
+      <div class="prayer-title">Oração:</div>
+      <div class="text-block">Santa Maria, Mãe de Deus, Senhora das Dores, rogai por nós ao Rei entregue à morte, vosso suave Filho para que por sua terna clemência e pela força de sua Santíssima Ressurreição se digne perdoar todos os nossos pecados.
+(Reza-se 1 Ave Maria)</div>
+</section>
+<section class="page">
+      <div class="mini-title">Canto Meditativo</div>
+      <div class="verse-block">Junto ao filho, para o egito, eu fugi, com dor atroz
+-Quando herodes o buscava, para dá-lo ao vil algoz (2x)</div>
+
+      <h2 class="tear-title">Terceira Lágrima de Nossa Senhora</h2>
+      <div class="citation">L3:: Do Evangelho de São Lucas (2, 48)</div>
+      <div class="text-block">Quando eles o viram, ficaram admirados.
+E sua mãe disse-lhe:
+Meu filho, que nos fizeste?! Eis que teu pai e eu andávamos à tua procura, cheios de aflição.</div>
+      <div class="psalm-title">3º - Salmo 118 (119),41-48</div>
+      <div class="verse-block">–41 Senhor, que desça sobre mim a vossa graça *
+e a vossa salvação que prometestes!
+–42 Esta será minha resposta aos que me insultam: *
+“Eu conto com a palavra do Senhor!”
+
+–43 Não retireis vossa verdade de meus lábios, *
+pois eu confio em vossos justos julgamentos!
+–44 Cumprirei constantemente a vossa lei; *
+para sempre, eternamente a cumprirei!
+
+–45 É amplo e agradável meu caminho, *
+porque busco e pesquiso as vossas ordens.
+–46 Quero falar de vossa lei perante os reis, *
+e darei meu testemunho sem temor.
+
+–47 Muito me alegro com os vossos mandamentos, *
+que eu amo, amo tanto, mais que tudo!
+–48 Elevarei as minhas mãos para louvar-vos *
+e com prazer meditarei vossa vontade.</div>
+      <div class="prayer-title">Oração:</div>
+      <div class="text-block">Santa Maria, Mãe de Deus, Senhora das Dores, rogai por nós ao Rei entregue à morte, vosso suave Filho para que por sua terna clemência e pela força de sua Santíssima Ressurreição se digne perdoar todos os nossos pecados.
+(Reza-se 1 Ave Maria)</div>
+
+      <div class="mini-title">Canto Meditativo</div>
+      <div class="verse-block">Quem dirá meu sentimento? Desolada me encontrei
+-Vendo o filho meu perdido. Por três dias o busquei (2x)</div>
+        <div class="footer-mark">Segunda e Terceira Lágrimas</div>
+          </section>
+
+    <section class="page">
+
+      <h2 class="tear-title">Quarta Lágrima de Nossa Senhora</h2>
+      <div class="citation">L4: Do Evangelho de São Lucas (23, 27-28)</div>
+      <div class="text-block">Seguia-o uma grande multidão de povo e de mulheres, que batiam no peito o lamentavam.
+Voltando-se para elas, Jesus disse: Filhas de Jerusalém, não choreis sobre mim, mas chorai sobre vós mesmas e sobre vossos filhos.</div>
+      <div class="psalm-title">4º - Salmo 53</div>
+      <div class="verse-block">–3 Por vosso nome, salvai-me, Senhor; *
+e dai-me a vossa justiça!
+–4 Ó meu Deus, atendei minha prece *
+e escutai as palavras que eu digo!
+
+=5 Pois contra mim orgulhosos se insurgem, †
+e violentos perseguem-me a vida: *
+não há lugar para Deus aos seus olhos.
+= 6 Quem me protege e me ampara é meu Deus; *
+é o Senhor quem sustenta minha vida!
+
+–8 Quero ofertar-vos o meu sacrifício *
+de coração e com muita alegria;
+– quero louvar, ó Senhor, vosso nome, *
+quero cantar vosso nome que é bom!
+– 9 Pois me livrastes de toda a angústia, *
+e humilhados vi meus inimigos!</div>
+      <div class="prayer-title">Oração:</div>
+      <div class="text-block">Santa Maria, Mãe de Deus, Senhora das Dores, rogai por nós ao Rei entregue à morte, vosso suave Filho para que por sua terna clemência e pela força de sua Santíssima Ressurreição se digne perdoar todos os nossos pecados.
+(Reza-se 1 Ave Maria)</div>
+      <div class="mini-title">Canto Meditativo</div>
+      <div class="verse-block">Que martírio na minh'alma, encontrando meu Jesus
+-No caminho do calvário, arquejante sob a cruz (2x)</div>
+    <div class="footer-mark">Quarta e Quinta Lágrimas</div>
+
+      <h2 class="tear-title">Quinta Lágrima de Nossa Senhora</h2>
+      <div class="citation">L5: Do Evangelho de São João (19, 25):</div>
+      <div class="text-block">Junto à cruz de Jesus estavam de pé sua mãe, a irmã de sua mãe, Maria, mulher de Cléofas, e Maria Madalena.</div>
+    </section>
+
+    <section class="page">
+      <div class="psalm-title">5º - Salmo 115</div>
+      <div class="verse-block">–10 Guardei a minha fé, mesmo dizendo: *
+“É demais o sofrimento em minha vida!”
+–11 Confiei, quando dizia na aflição: *
+“Todo homem é mentiroso! Todo homem!”
+
+–12 Que poderei retribuir ao Senhor Deus *
+por tudo aquilo que ele fez em meu favor?
+–13 Elevo o cálice da minha salvação, *
+invocando o nome santo do Senhor.
+–14 Vou cumprir minhas promessas ao Senhor *
+na presença de seu povo reunido.
+
+–15 É sentida por demais pelo Senhor *
+a morte de seus santos, seus amigos.
+=16 Eis que sou o vosso servo, ó Senhor, †
+vosso servo que nasceu de vossa serva; *
+mas me quebrastes os grilhões da escravidão!
+
+–17 Por isso oferto um sacrifício de louvor, *
+invocando o nome santo do Senhor.
+–18 Vou cumprir minhas promessas ao Senhor *
+na presença de seu povo reunido;
+–19 nos átrios da casa do Senhor, *
+em teu meio, ó cidade de Sião!</div>
+      <div class="prayer-title">Oração:</div>
+      <div class="text-block">Santa Maria, Mãe de Deus, Senhora das Dores, rogai por nós ao Rei entregue à morte, vosso suave Filho para que por sua terna clemência e pela força de sua Santíssima Ressurreição se digne perdoar todos os nossos pecados.
+(Reza-se 1 Ave Maria)</div>
+<div class="footer-mark">Quinta e Sexta Lágrimas</div>
+
+      <div class="mini-title">Canto Meditativo</div>
+      <div class="verse-block">Mas, ó céu, ó terra, vede: Dor maior não pode haver
+Vendo a morte do meu filho, foi milagre eu não morrer!</div>
+      
+
+      <h2 class="tear-title">Sexta Lágrima de Nossa Senhora</h2>
+      <div class="citation">L6- Do Evangelho de São João (19, 38):</div>
+      <div class="text-block">Depois disso, José de Arimatéia, que era discípulo de Jesus, mas ocultamente, por medo dos judeus, rogou a Pilatos a autorização para tirar o corpo de Jesus. Pilatos permitiu. Foi, pois, e tirou o corpo de Jesus.</div>
+    </section>
+
+    <section class="page">
+      <div class="psalm-title">6º - Salmo 45</div>
+      <div class="verse-block">O Senhor para nós é refúgio e vigor, *
+sempre pronto, mostrou-se um socorro na angústia;
+–3 assim não tememos, se a terra estremece, *
+se os montes desabam, caindo nos mares,
+–4 se as águas trovejam e as ondas se agitam, *
+se, em feroz tempestade, as montanhas se abalam:
+
+–5 Os braços de um rio vêm trazer alegria *
+à Cidade de Deus, à morada do Altíssimo.
+–6 Quem a pode abalar? Deus está no seu meio! *
+Já bem antes da aurora, ele vem ajudá-la.
+–7 Os povos se agitam, os reinos desabam; *
+troveja sua voz e a terra estremece.
+
+–8 Conosco está o Senhor do universo! *
+O nosso refúgio é o Deus de Jacó!
+
+–9 Vinde ver, contemplai os prodígios de Deus *
+e a obra estupenda que fez no universo:
+= reprime as guerras na face da terra, †
+10 ele quebra os arcos, as lanças destrói, *
+e queima no fogo os escudos e as armas:
+–11 “Parai e sabei, conhecei que eu sou Deus, *
+que domino as nações, que domino a terra!”
+
+–12 Conosco está o Senhor do universo! *
+O nosso refúgio é o Deus de Jacó!</div>
+      <div class="prayer-title">Oração:</div>
+      <div class="text-block">Santa Maria, Mãe de Deus, Senhora das Dores, rogai por nós ao Rei entregue à morte, vosso suave Filho para que por sua terna clemência e pela força de sua Santíssima Ressurreição se digne perdoar todos os nossos pecados.
+(Reza-se 1 Ave Maria)</div>
+      <div class="mini-title">Canto Meditativo</div>
+      <div class="verse-block">Contemplai meu sofrimento, minha angústia ao pé da cruz
+Pela lança transpassado, vi meu filho, o meu Jesus</div>
+
+      <h2 class="tear-title">Sétima Lágrima de Nossa Senhora</h2>
+      <div class="citation">Do Evangelho de São Lucas (23, 55):</div>
+      <div class="text-block">As mulheres, que tinham vindo com Jesus da Galiléia, acompanharam José. Elas viram o túmulo e o modo como o corpo de Jesus ali fora depositado.</div> 
+      <div class="footer-mark">Sexta e Sétima Lágrimas</div>
+    </section>
+    <section class="page">
+      <div class="psalm-title">7º - Salmo 63</div>
+      <div class="columns">
+        <div class="verse-block">–2 Ó Deus, ouvi a minha voz, o meu lamento! *
+salvai-me a vida do inimigo aterrador!
+–3 Protegei-me das intrigas dos perversos *
+e do tumulto dos obreiros da maldade!
+
+–4 Eles afiam suas línguas como espadas, *
+lançam palavras venenosas como flechas,
+–5 para ferir os inocentes às ocultas *
+e atingi-los de repente, sem temor.
+
+–6 Uns aos outros se encorajam para o mal *
+e combinam às ocultas, traiçoeiros,
+– onde pôr as armadilhas preparadas, *
+comentando entre si: ‘Quem nos verá?’</div>
+        <div class="verse-block">–7 Eles tramam e disfarçam os seus crimes. *
+É um abismo o coração de cada homem!
+–8 Deus, porém, os ferirá com suas flechas, *
+e cairão todos feridos, de repente.
+
+–9 Sua língua, os levará à perdição, *
+e quem os vir meneará sua cabeça;
+–10 com temor proclamará a ação de Deus, *
+e tirará uma lição de sua obra.
+
+=10 O homem justo há de alegrar-se no Senhor †
+e junto dele encontrará o seu refúgio, *
+e os de reto coração triunfarão.</div>
+      </div>
+      <div class="prayer-title">Oração:</div>
+      <div class="text-block">Santa Maria, Mãe de Deus, Senhora das Dores, rogai por nós ao Rei entregue à morte, vosso suave Filho para que por sua terna clemência e pela força de sua Santíssima Ressurreição se digne perdoar todos os nossos pecados.</div>
+      <div class="text-block"><strong>(Reza-se 1 Ave Maria)</strong></div>
+      <div class="mini-title">Canto Meditativo</div>
+      <div class="verse-block">Oh! Que dor mais cruciante, que suprema solidão
+-Ao levarem-no ao sepulcro, invadiu-me o coração (2x)</div>
+      <div class="footer-mark">Sétima Lágrima e Súplica</div>
+
+      <h2 class="section-title">Oração de Súplica</h2>
+      <div class="supply">Nossa Senhora das Sete Dores, estamos reunidos aqui diante de Vós como irmãos, agradecidos ao Senhor pelo seu amor misericordioso. E Vós estais aqui conosco, como com os Apóstolos no Cenáculo.
+
+Mãe da Igreja e Consoladora dos aflitos, voltamo-nos confiadamente para Vós, nas alegrias e fadigas de nossas vidas. Olhai para nós com ternura e acolhei-nos nos vossos braços. Rainha dos Apóstolos e Refúgio dos pecadores, que conheceis as nossas limitações humanas, os falhanços espirituais, e o sofrimento pela solidão e pelo abandono: curai com a vossa doçura as nossas feridas.
+
+Mãe de Deus e nossa Mãe, confiamos-Vos a nossa vida e a nossa pátria, confiamos-Vos a nossa própria comunhão. Obtende-nos a graça de vivermos fielmente dia a dia as palavras que o vosso Filho Jesus nos ensinou e que agora, n'Ele e com Ele, dirigimos a Deus nosso Pai.</div>
+      <p class="rubric text-block">(reza-se ou canta-se o Pai Nosso.)</p>
+      <div class="text-block indent"><strong>Pai Nosso...</strong></div>
+    </section>
+    <section class="page">
+      <h2 class="section-title">Magnificat</h2>
+      <div class="subhead">(Lc 1,46-55)</div>
+      <div class="columns">
+        <div class="verse-block">-46 A minha alma engrandece ao Senhor *
+        -47 e se alegrou o meu espírito em Deus, meu Salvador;
+        –48 pois ele viu a pequenez de sua serva, *
+        desde agora as gerações hão de chamar-me de bendita.
+        
+        –49 O Poderoso fez por mim maravilhas *
+        e Santo é o seu nome!
+        –50 Seu amor, de geração em geração, *
+        chega a todos que o respeitam;
+        
+        –51 demonstrou o poder de seu braço, *
+        dispersou os orgulhosos;
+        –52 derrubou os poderosos de seus tronos *
+        e os humildes exaltou;</div>
+        
+        <div class="verse-block">–53 De bens saciou os famintos, *
+        e despediu, sem nada, os ricos.
+        –54 Acolheu Israel, seu servidor, *
+        fiel ao seu amor,
+        
+        –55 como havia prometido aos nossos pais, *
+        em favor de Abraão e de seus filhos, para sempre.
+        
+        – Glória ao Pai e ao Filho e ao Espírito Santo. *
+        Como era no princípio, agora e sempre. Amém.</div>
+      </div>
+
+      <h2 class="section-title">Oração e Bênção Final</h2>
+      <div class="text-block rubric center">Ó Deus, que concedeis à vossa Igreja imitar a Bem-aventurada Virgem Maria na contemplação da paixão de Cristo, dai-nos, por sua intercessão, a graça de nos configurarmos cada vez mais ao vosso Filho unigênito e chegar à plenitude da vossa graça. Ele vive e reina pelos séculos dos séculos.
+Amém.</div>
+      <div class="dialogue"><strong>PR:</strong> O Senhor esteja convosco.
+<strong>AS:</strong> Ele está no meio de nós.
+<strong>PR:</strong> Deus, Pai de misericórdia, conceda a todos vós, como concedeu ao filho pródigo, a alegria do retorno à casa.
+<strong>AS:</strong> Amém!
+<strong>PR:</strong> O Senhor Jesus Cristo, modelo de oração e de vida, vos guie nesta caminhada quaresmal a uma verdadeira conversão.
+<strong>AS:</strong> Amém!
+<strong>PR:</strong> O Espírito de sabedoria e fortaleza vos sustente na luta contra o mal, para poderdes com Cristo celebrar a vitória da Páscoa.
+<strong>AS:</strong> Amém!
+<strong>PR:</strong> Abençoe-vos Deus todo-poderoso, Pai e Filho † e Espírito Santo.
+<strong>AS:</strong> Amém.
+<strong>PR:</strong> A alegria do Senhor seja a vossa força. Ide em paz, e que o Senhor vos acompanhe.
+<strong>AS:</strong> Graças a Deus!</div>
+      <div class="ornament"></div>
+      <div class="footer-mark">Fim do Ofício</div>
+    </section>
+  </main>
+</body>
+</html>
