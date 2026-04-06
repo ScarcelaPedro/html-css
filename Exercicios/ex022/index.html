@@ -3,10 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cores em CSS</title>
+    <title>Teste de imagem de Fundo</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body{
+            background-image: url(Images/wallpaper001.jpg);
+        }
+        .quadrado{
+            display: inline-block;
+            border:  2px solid black;
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            background-color: lightgray;
+        }
+
+        .m1{
+              display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 20px;
+        }
+
+        #q1{
+            background-color: skyblue;
+            transition: 0.3s;
+        }
+
+        #q1:hover{
+            transform: translateY(-5px);
+        }
+
+        #q2{
+            background-image: linear-gradient(to bottom, yellow, orange, red);
+            transition: 0.9s;
+        }
+
+        #q2:hover{
+            transform: translateY(5px);
+        }
+
+        #q3{
+            background-image: url(Images/pattern003.png);
+            transition: 0.3s;
+        }
+
+        #q3:hover{
+            transform: translateY(-5px);
+        }
+    </style>
 </head>
 <body>
-    
+    <section class="m1">
+        <a href="pag02.html">
+            <div class="quadrado" id="q1">
+        
+            </div>
+        </a>
+        <a href="pag03.html">
+            <div class="quadrado" id="q2">
+            </div>
+        </a>
+        <a href="pag04.html">
+            <div class="quadrado" id="q3">
+            </div>
+        </a>
+        <a href="pag05.html">
+            <div class="quadrado" id="q1">
+            </div>
+        </a>
+        
+    </section>
 </body>
 </html>
