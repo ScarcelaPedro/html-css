@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ê laiá</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/mq.css">
+</head>
+<body onresize="mudouTamanho()">
+    <header>
+        <h1>Meu site</h1>
+        <span id="burger" class="material-symbols-outlined" onclick="clickMenu()">menu</span>
+        <menu id="menu">
+            <ul>
+                <li><a href="#">Opção 1</a></li>
+                <li><a href="#">Opção 2</a></li>
+                <li><a href="#">Opção 3</a></li>
+                <li><a href="../../desafio/d14/index.html">Opção 4</a></li>
+                <li><a href="#">Opção 5</a></li>
+                <li><a href="#">Opção 6</a></li>
+            </ul>
+        </menu>
+
+    </header>
+    <main>
+        <article>
+            <h2>Testando media Queries</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quod, sint veniam aspernatur vero mollitia ab ratione numquam laboriosam. Eum recusandae laborum autem, provident facilis hic accusantium tempora voluptas labore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit aspernatur, repudiandae repellat, aut a debitis optio qui ad nihil explicabo dignissimos commodi, voluptatum ab porro nemo incidunt nesciunt! Non, voluptate?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque adipisci temporibus blanditiis minima quia provident pariatur voluptatibus quos vitae! Voluptatum corrupti eum animi ipsa in voluptates incidunt quae sint qui! Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, fugiat rerum! Distinctio molestias aperiam animi magni reprehenderit numquam, quos commodi eaque eligendi cumque consequatur, libero odio expedita dolore similique corporis?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad est eius iste placeat nesciunt officia necessitatibus aliquid, modi iure dolorem explicabo reprehenderit, provident temporibus? Ratione, neque debitis? Sunt, voluptates cum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, molestias, corporis esse voluptatum commodi ad nemo facilis quam deserunt provident veritatis doloremque porro impedit placeat aperiam omnis, adipisci voluptatem animi.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non, adipisci placeat. Eius, incidunt cumque laborum repellendus fuga eaque illo reprehenderit nostrum aut sint nemo praesentium eveniet asperiores aliquam officia voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id est eaque doloribus debitis accusantium, cumque aliquam fuga corrupti vel dignissimos culpa quidem voluptates sint cum cupiditate quis atque consequuntur deserunt.</p>
+        </article>
+    </main>
+    <script>
+
+        function mudouTamanho() {
+            if(window.innerWidth >= 768) {
+                menu.style.display = 'block'
+            } else {    
+                menu.style.display = 'none'
+            }
+        }
+
+        function clickMenu() {
+            if (menu.style.display == 'block'){
+                menu.style.display = 'none'
+            } 
+            else {
+            menu.style.display = 'block '
+            }
+        }
+    </script>
+</body>
+</html>

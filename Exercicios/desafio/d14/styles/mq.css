@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+@media screen and (min-width: 768px) {
+    body {
+        background-image: linear-gradient(to top, #49a09d, #5f2c82);
+    }
+    
+    #login{
+        width: 80vw;
+        height: 293px;
+    }
+
+    #login #img {
+        float: left;
+        width: 30%;
+        height: 100%;
+    }
+
+    #login #form{
+        float: right;
+        width: 70%;
+    }
+
+    form .botao {
+        border-radius: 8px;
+    }
+
+    @media screen and (min-width: 992px) {  
+        #login{
+             width: 950px;
+             height: 339px;
+        }
+
+        #login #img {
+            float: right ;
+            width: 50%;
+            height: 100%;
+        }
+        
+        #login #form {
+            float: left;
+            width: 50%;
+        }
+
+        #form h1{
+            font-size: 2em;
+        }
+         
+        #form p {
+            font-size: 1.2em;
+        }
+
+    }
+}

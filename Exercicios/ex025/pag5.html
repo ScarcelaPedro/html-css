@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        *{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <form action="cadastro.php" method="post" autocomplete="on">
+        <fieldset>
+            <legend>a</legend>  
+            <label for="aa"> username</label>
+            <select name="Não sei" id="aa">
+                <option>Shaulin</option>
+                <option>zé da Manga</option>
+                <option>zé polvinho</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>Fota</legend>
+            <label for="hum">nome</label>
+            <input type="text" name="mun" id="hum" list="gg">
+            <datalist id="gg">
+                <option>João</option>
+                <option>zè</option>
+            </datalist><br>
+            <label for="joj">opn</label><br>
+            <textarea name="kk" id="joj" cols="30" rows="10"></textarea>
+        </fieldset>
+        <fieldset>
+            <label for="in1"> Numero 1</label>
+            <input type="number" name="n1" id="in1" min="0" max="9000000000000" oninput="isoma.innerHTML = Number(in1.value) + Number(in2.value)"> <br>
+
+            <label for="in2"> Numero 2</label>
+            <input type="number" name="n2" id="in2" min="0" max="9000000000000" oninput="isoma.innerHTML = Number(in1.value) + Number(in2.value)"> <br>
+
+            <label for="isoma">Soma</label>
+            <output name="soma" id="isoma">0</output><br>
+
+            
+        </fieldset>
+        <fieldset>
+            <label for="in4"> Numero 1</label>
+            <input type="number" name="n1" id="in4" min="0" max="9000000000000" oninput="ix.innerHTML = Number(in4.value) - Number(in3.value)"> <br>
+
+            <label for="in3"> Numero 2</label>
+            <input type="number" name="n2" id="in3" min="0" max="9000000000000" oninput="ix.innerHTML = Number(in4.value) - Number(in3.value)"> <br>
+
+            <label for="ix">Multplication</label>
+            <output name="ll" id="ix">0</output>
+        </fieldset>
+        <p>
+            <label for="iano" >nscimento</label>
+            <input type="number" name="ano" id="iano" min="1900" max="2026" value="2026" oninput="idade() ">
+        </p>
+        <p>
+            <label for="iidade">Você tem ou vai fazer</label>
+            <output id="iidade">0</output>
+            anos
+        </p>
+        <p>
+                <input type="submit" value="Enviar">
+                <input type="reset" value="Limpar">
+        </p>
+
+        <p>
+        <a href="index.html" style="text-decoration: none; color: black;">00</a>
+        </p>
+
+        <p>
+        <a href="pag.html" style="text-decoration: none; color: black;">00</a>
+        </p>
+    </form>
+    <script>
+        function idade(){
+            let atual = new Date().getFullYear()
+            iidade.innerHTML = Number(atual) - Number(iano.value)
+        }
+    </script>
+</body>
+</html> 
